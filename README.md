@@ -18,10 +18,10 @@ Application web permettant de constituer et gerer une bibliotheque de citations.
 ### 1. Obtenir le projet
 ```bash
 # Cloner le depot localement
-git clone [URL_DU_REPO]
+git clone git@github.com:NashieArtz/biblio-citation.git
 
 # Acceder au dossier du projet
-cd [NOM_DU_DOSSIER]
+cd biblio-citation
 
 ```
 
