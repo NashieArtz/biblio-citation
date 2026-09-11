@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.header-page h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.citations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.citation-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.citation-texte {
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0 0 15px 0;
+}
+
+.citation-infos {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.citation-auteur {
+    font-weight: bold;
+}
+
+.citation-source {
+    color: #666;
+}
+
+.citations-more {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.citation-footer {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.citation-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.alert-info {
+    background-color: #e2e3e5;
+    color: #383d41;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form ul {
+    list-style: none;
+    padding: 0;
+    color: #e74c3c;
+    font-size: 0.85rem;
+}
