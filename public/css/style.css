@@ -117,3 +117,36 @@ body {
     border-radius: 6px;
     text-align: center;
 }
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form ul {
+    list-style: none;
+    padding: 0;
+    color: #e74c3c;
+    font-size: 0.85rem;
+}

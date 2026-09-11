@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Citation;
 use App\Form\CitationType;
 use App\Repository\CitationRepository;
+use App\Service\CitationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,5 +22,30 @@ final class CitationController extends AbstractController
         ]);
     }
 
-    
+    #[Route('/new', name: 'app_citation_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, CitationService $citationService): Response
+    {
+        $citation = new Citation();
+
+        $form = $this->createForm(
+            CitationType::class, $citation
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $citationService->add($citation);
+            $this->addFlash(
+                'success',
+                'Le produit a été ajouté avec succès.'
+            );
+
+            return $this->redirectToRoute(
+                'app_citation_index');
+        }
+
+        return $this->render('citation/new-citation.html.twig', [
+            'form' => $form,
+        ]);
+    }
 }

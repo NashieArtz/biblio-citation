@@ -11,7 +11,7 @@
 <div class="container">
     <header class="header-page">
         <h1>Ma Bibliothèque</h1>
-        <a href="#" class="btn btn-primary">Ajouter une citation</a>
+        <a href="{{ path('app_citation_new')}}" class="btn btn-primary">Ajouter une citation</a>
     </header>
 
     {% if citations is empty %}
@@ -32,8 +32,8 @@
                         {% if citation.source is not empty %}
                             <span class="citation-source">, {{ citation.source }}</span>
 
-                            {% if citation.publishingyear is not empty %} 
-                                ({{ citation.publishingyear }})
+                            {% if citation.publishingYear is not empty %} 
+                                ({{ citation.publishingYear }})
                             {% endif %}
                         {% endif %}
 
