@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la citation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="header-page">
+        <h1>Détail de la citation</h1>
+        <a href="{{ path('app_citation_index') }}" class="btn btn-secondary">Retour à l'accueil</a>
+    </header>
+
+    <div class="citation-card" style="max-width: 700px; margin: 0 auto;">
+        <blockquote class="citation-texte">
+            "{{ citation.text }}"
+        </blockquote>
+        
+        <div class="citation-infos" style="font-size: 1.1rem; margin-top: 15px;">
+            <p><strong>Auteur :</strong> {{ citation.auteur }}</p>
+            
+            {% if citation.source is not empty %}
+                <p><strong>Source :</strong> {{ citation.source }}</p>
+            {% endif %}
+
+            {% if citation.publishingYear is not empty %} 
+                <p><strong>Année de publication :</strong> {{ citation.publishingYear }}</p>
+            {% endif %}
+
+            {% if citation.category is not empty %}
+                <p><strong>Catégorie :</strong> {{ citation.category }}</p>
+            {% endif %}
+            
+            {% if citation.universe is not empty %}
+                <p><strong>Univers :</strong> {{ citation.universe }}</p>
+            {% endif %}
+            
+            {% if citation.tags is not empty %}
+                <p><strong>Tags :</strong> {{ citation.tags|join(', ') }}</p>
+            {% endif %}
+        </div>
+
+        <div class="citation-footer" style="margin-top: 20px;">
+            <span class="citation-date">Ajouté le {{ citation.datetime ? citation.datetime|date('d/m/Y H:i') : 'N/A' }}</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

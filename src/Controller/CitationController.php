@@ -48,4 +48,12 @@ final class CitationController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}', name: 'app_citation_show', methods: ['GET'])]
+    public function show(Citation $citation): Response
+    {
+        return $this->render('citation/show.html.twig', [
+            'citation' => $citation,
+        ]);
+    }
 }
