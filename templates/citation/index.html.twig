@@ -57,9 +57,14 @@
                         
                         <div class="actions">
                             <a href="{{ path('app_citation_show', {'id': citation.id}) }}" class="btn btn-secondary">Consulter</a>
-                            <a href="#" class="btn btn-secondary">Modifier</a>
+                            <form method="post" action="{{ path('app_citation_delete', {'id': citation.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette citation ?');" style="flex: 1; display: inline-block;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ citation.id) }}">
+                                <button class="btn btn-danger" style="width: 100%;">Supprimer</button>
+                            </form>
+                            <a href="app_citation_edit" class="btn btn-secondary">Modifier</a>
                         </div>
                     </div>
+                    
                 </article>
             {% endfor %}
         </div>

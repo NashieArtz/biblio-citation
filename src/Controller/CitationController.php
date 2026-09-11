@@ -34,7 +34,7 @@ final class CitationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $citationService->add($citation);
+            $citationService->save($citation);
             $this->addFlash(
                 'success',
                 'Le produit a été ajouté avec succès.'
@@ -54,6 +54,37 @@ final class CitationController extends AbstractController
     {
         return $this->render('citation/show.html.twig', [
             'citation' => $citation,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_citation_delete', methods: ['POST'])]
+    public function delete(Request $request, Citation $citation, CitationService $citationService): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $citation->getId(), $request->getPayload()->getString('_token'))) {
+            $citationService->remove($citation);
+            $this->addFlash('success', 'La citation a été supprimée avec succès.');
+        }
+
+        return $this->redirectToRoute('app_citation_index');
+    }
+
+    #[Route('/{id}/edit', name: 'app_citation_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Citation $citation, CitationService $citationService): Response
+    {
+        $form = $this->createForm(CitationType::class, $citation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $citationService->save($citation);
+
+            $this->addFlash('success', 'La citation a été modifiée avec succès.');
+
+            return $this->redirectToRoute('app_citation_index');
+        }
+
+        return $this->render('citation/edit.html.twig', [
+            'citation' => $citation,
+            'form' => $form,
         ]);
     }
 }

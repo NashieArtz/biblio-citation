@@ -19,7 +19,14 @@ class CitationService
         $this->entityManager = $entityManager;
     }
     
-    public function add(Citation $citation): void
+
+    public function remove(Citation $citation): void
+    {
+        $this->entityManager->remove($citation);
+        $this->entityManager->flush();
+    }
+
+    public function save(Citation $citation): void
     {
         $this->entityManager->persist($citation);
         $this->entityManager->flush();
