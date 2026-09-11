@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliothèque de citations{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="header-page">
+        <h1>Ma Bibliothèque</h1>
+        <a href="#" class="btn btn-primary">Ajouter une citation</a>
+    </header>
+
+    {% if citations is empty %}
+        <div class="alert-info">
+            Aucune citation n'est enregistrée pour le moment.
+        </div>
+    {% else %}
+        <div class="citations-grid">
+            {% for citation in citations %}
+                <article class="citation-card">
+                    <blockquote class="citation-texte">
+                        "{{ citation.text }}"
+                    </blockquote>
+                    
+                    <div class="citation-infos">
+                        <span class="citation-auteur">— {{ citation.auteur }}</span>
+                        
+                        {% if citation.source is not empty %}
+                            <span class="citation-source">, {{ citation.source }}</span>
+
+                            {% if citation.publishingyear is not empty %} 
+                                ({{ citation.publishingyear }})
+                            {% endif %}
+                        {% endif %}
+
+                        <div class="citations-more">
+                            {% if citation.category is not empty %}
+                                <strong>Catégorie :</strong> {{ citation.category }}<br>
+                            {% endif %}
+                            
+                            {% if citation.universe is not empty %}
+                                <strong>Univers :</strong> {{ citation.universe }}<br>
+                            {% endif %}
+                            
+                            {% if citation.tags is not empty %}
+                                <strong>Tags :</strong> {{ citation.tags|join(', ') }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="citation-footer">
+                        <span class="citation-date">Ajouté le {{ citation.datetime ? citation.datetime|date('d/m/Y') : 'N/A' }}</span>
+                        
+                        <div class="actions">
+                            <a href="#" class="btn btn-secondary">Consulter</a>
+                            <a href="#" class="btn btn-secondary">Modifier</a>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
