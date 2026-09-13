@@ -16,7 +16,9 @@
 
     <div class="citation-card" style="max-width: 600px; margin: 0 auto;">
         {{ form_start(form) }}
-            
+
+            {{ form_errors(form) }}
+
             <div style="margin-bottom: 15px;">
                 {{ form_row(form.auteur) }}
             </div>
