@@ -45,6 +45,14 @@
 
         <div class="citation-footer" style="margin-top: 20px;">
             <span class="citation-date">Ajouté le {{ citation.datetime ? citation.datetime|date('d/m/Y H:i') : 'N/A' }}</span>
+
+            <div class="actions">
+                <a href="{{ path('app_citation_edit', {'id': citation.id}) }}" class="btn btn-secondary">Modifier</a>
+                <form method="post" action="{{ path('app_citation_delete', {'id': citation.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette citation ?');" style="flex: 1; display: inline-block;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ citation.id) }}">
+                    <button class="btn btn-danger" style="width: 100%;">Supprimer</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

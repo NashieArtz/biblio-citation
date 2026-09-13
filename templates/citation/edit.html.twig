@@ -11,7 +11,10 @@
 <div class="container">
     <header class="header-page">
         <h1>Modifier la citation</h1>
-        <a href="{{ path('app_citation_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        <div class="actions">
+            <a href="{{ path('app_citation_show', {'id': citation.id}) }}" class="btn btn-secondary">Consulter</a>
+            <a href="{{ path('app_citation_index') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
     </header>
 
     <div class="citation-card" style="max-width: 600px; margin: 0 auto;">

@@ -18,6 +18,19 @@
         {% endif %}
     </head>
     <body>
+        {% block flashes %}
+            {% set flashes = app.flashes %}
+            {% if flashes is not empty %}
+                <div class="container flash-messages">
+                    {% for label, messages in flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
         {% block body %}{% endblock %}
     </body>
 </html>
