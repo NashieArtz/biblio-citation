@@ -61,7 +61,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ citation.id) }}">
                                 <button class="btn btn-danger" style="width: 100%;">Supprimer</button>
                             </form>
-                            <a href="app_citation_edit" class="btn btn-secondary">Modifier</a>
+                            <a href="{{ path('app_citation_edit', {'id': citation.id}) }}" class="btn btn-secondary">Modifier</a>
                         </div>
                     </div>
                     
