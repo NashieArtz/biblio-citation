@@ -23,7 +23,7 @@ final class CitationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_citation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CitationService $citationService): R esponse
+    public function new(Request $request, CitationService $citationService): Response
     {
         $citation = new Citation();
 
