@@ -23,12 +23,13 @@ final class CitationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_citation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CitationService $citationService): Response
+    public function new(Request $request, CitationService $citationService): R esponse
     {
         $citation = new Citation();
 
         $form = $this->createForm(
-            CitationType::class, $citation
+            CitationType::class,
+            $citation
         );
 
         $form->handleRequest($request);
@@ -37,11 +38,12 @@ final class CitationController extends AbstractController
             $citationService->save($citation);
             $this->addFlash(
                 'success',
-                'Le produit a été ajouté avec succès.'
+                'La citation a été ajoutée avec succès.'
             );
 
             return $this->redirectToRoute(
-                'app_citation_index');
+                'app_citation_index'
+            );
         }
 
         return $this->render('citation/new-citation.html.twig', [
@@ -63,6 +65,8 @@ final class CitationController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $citation->getId(), $request->getPayload()->getString('_token'))) {
             $citationService->remove($citation);
             $this->addFlash('success', 'La citation a été supprimée avec succès.');
+        } else {
+            $this->addFlash('danger', "La suppression a échoué : jeton de sécurité invalide.");
         }
 
         return $this->redirectToRoute('app_citation_index');
