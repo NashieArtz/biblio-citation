@@ -38,6 +38,11 @@ class Citation
     #[ORM\Column]
     private array $tags = [];
 
+    public function __construct()
+    {
+        $this->datetime = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
