@@ -47,6 +47,7 @@ class CitationType extends AbstractType
                 'choices' => array_combine($categories, $categories),
                 'required' => false,
                 'placeholder' => '— Aucune —',
+                'invalid_message' => "Cette catégorie n'existe pas dans la liste.",
             ])
             ->add('category_new', TypeTextType::class, [
                 'label' => 'Autre catégorie',
@@ -59,6 +60,7 @@ class CitationType extends AbstractType
                 'choices' => array_combine($universes, $universes),
                 'required' => false,
                 'placeholder' => '— Aucun —',
+                'invalid_message' => "Cet univers n'existe pas dans la liste.",
             ])
             ->add('universe_new', TypeTextType::class, [
                 'label' => 'Autre univers',
@@ -73,6 +75,7 @@ class CitationType extends AbstractType
                 'expanded' => false,
                 'required' => false,
                 'attr' => ['size' => 8],
+                'invalid_message' => "Un des tags sélectionnés n'existe pas dans la liste.",
             ])
             ->add('tags_new', TypeTextType::class, [
                 'label' => 'Nouveaux tags',
